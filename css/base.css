@@ -21,20 +21,21 @@ Group {
     margin-left: 10px;
 }
 
+QToolButton#return
+{
+    /*noinspection CssUnknownTarget*/
+    border-image: url(./resources/icons/return.png);
+    margin-left: 8px;
+
+}
+
+
 QToolButton#next
 {
     /*noinspection CssUnknownTarget*/
     border-image: url(./resources/icons/next.png);
     margin-right: 8px;
-    margin-left: 6px;
 
-
-}
-
-QToolButton#next:hover
-{
-    /*noinspection CssUnknownTarget*/
-    border-image: url(./resources/icons/next.png);
 }
 
 
@@ -42,12 +43,5 @@ QToolButton#prev
 {
     /*noinspection CssUnknownTarget*/
     border-image: url(./resources/icons/prev.png);
-    margin-left: 8px;
-    margin-right: 6px;
 }
 
-QToolButton#prev:hover
-{
-    /*noinspection CssUnknownTarget*/
-    border-image: url(./resources/icons/prev.png);
-}

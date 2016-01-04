@@ -23,4 +23,4 @@ class EditWindow(base.Main):
         self.config = config
         self.tool = tool.Tool(config["height_tool"], parent=self)
         self.addToolBar(self.tool_area[config["tool_area"]], self.tool)
-        self.tool.init_group("prev", "next")
+        self.tool.init_group("return", "prev", "next", icon_size=16)
