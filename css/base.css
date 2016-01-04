@@ -1,0 +1,53 @@
+
+
+EditWindow {
+    background-color: #E5E5E5;
+}
+
+Tool {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    background-color: #aeaeaf;
+
+
+}
+
+Group {
+    background-color: #aeaeaf;
+    border: 1px solid white;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+QToolButton#next
+{
+    /*noinspection CssUnknownTarget*/
+    border-image: url(./resources/icons/next.png);
+    margin-right: 8px;
+    margin-left: 6px;
+
+
+}
+
+QToolButton#next:hover
+{
+    /*noinspection CssUnknownTarget*/
+    border-image: url(./resources/icons/next.png);
+}
+
+
+QToolButton#prev
+{
+    /*noinspection CssUnknownTarget*/
+    border-image: url(./resources/icons/prev.png);
+    margin-left: 8px;
+    margin-right: 6px;
+}
+
+QToolButton#prev:hover
+{
+    /*noinspection CssUnknownTarget*/
+    border-image: url(./resources/icons/prev.png);
+}

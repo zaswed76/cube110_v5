@@ -1,0 +1,27 @@
+{
+  "tool_buttons": [
+    "board",
+    "prev",
+    "next",
+    "zoom_in|true",
+    "zoom_out|true",
+    "mirror",
+    "save",
+    "settings"
+  ],
+  "tool_icon_size": 28,
+  "size_display": [
+    604,
+    604
+  ],
+  "scene_geometry": [
+    0,
+    0,
+    600,
+    600
+  ],
+  "EXT": ".png",
+  "start_level_id": 0,
+  "height_tool": 45,
+  "tool_area": "bottom"
+}
