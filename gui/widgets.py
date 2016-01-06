@@ -5,10 +5,10 @@
 from PyQt4 import QtGui, QtCore
 
 
-class Config:
-    margin = 1
-    spacing = 1
-    icon_dir = None
+
+margin = 4
+spacing = 4
+
 
 
 
@@ -19,7 +19,7 @@ class Box(QtGui.QBoxLayout):
     _vertical = QtGui.QBoxLayout.TopToBottom
 
     def __init__(self, direction, QWidget_parent=None,
-                 margin=Config.margin, spacing=Config.spacing):
+                 margin=margin, spacing=spacing):
         super().__init__(direction, QWidget_parent)
         self.setDirection(direction)
         self.setMargin(margin)
@@ -27,6 +27,13 @@ class Box(QtGui.QBoxLayout):
 
 class SettingButton(QtGui.QPushButton):
     def __init__(self, name, size):
+
+        """
+
+        :type size_button: int
+        :type size_icon: int
+        :type name: str
+        """
         super().__init__()
         self.setObjectName(name)
         self.setIconSize(QtCore.QSize(size, size))

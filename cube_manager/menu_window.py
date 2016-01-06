@@ -5,8 +5,18 @@ import sys
 from PyQt4 import QtGui, QtCore
 from gui import widgets as gui
 
+icon_setting_size = 44
+spacing_setting = 28
+margin_setting = 7
+stretch_game_tool = 2
+stretch_display_layout = 9
+stretch_display_widget = 35
+stretch_setting_widget = 2
+
 
 class GlobalMenu(gui.MenegerFrame):
+
+
     def __init__(self, name, parent=None):
         super().__init__(name, parent)
         self.setParent(parent)
@@ -15,20 +25,21 @@ class GlobalMenu(gui.MenegerFrame):
         self.setting_widget = gui.ToolGame("setting")
         self.display_widget = gui.ToolGame("display")
 
-        self.exit = gui.SettingButton("exit_button", 48)
-        self.volume = gui.SettingButton("volume_button", 48)
-        self.config = gui.SettingButton("config_button", 48)
+        self.exit = gui.SettingButton("exit_button", icon_setting_size)
+        self.volume = gui.SettingButton("volume_button", icon_setting_size)
+        self.config = gui.SettingButton("config_button", icon_setting_size)
 
-        display_layout = gui.Box(gui.Box._vertical)
-        box_base = gui.Box(gui.Box._horizontal, self)
+        display_layout = gui.Box(gui.Box._vertical, None, 0, 0)
+        box_base = gui.Box(gui.Box._horizontal, self, 0, 0)
         setting_layout = gui.Box(gui.Box._horizontal,
                                  QWidget_parent=self.setting_widget,
-                                 spacing=35)
+                                 spacing=spacing_setting,
+                                 margin=margin_setting)
 
-        box_base.addWidget(self.tool_game_widget, 2)
-        box_base.addLayout(display_layout, 9)
-        display_layout.addWidget(self.display_widget, 35)
-        display_layout.addWidget(self.setting_widget, 1)
+        box_base.addWidget(self.tool_game_widget, stretch_game_tool)
+        box_base.addLayout(display_layout, stretch_display_layout)
+        display_layout.addWidget(self.display_widget, stretch_display_widget)
+        display_layout.addWidget(self.setting_widget, stretch_setting_widget)
 
         setting_layout.addStretch(1)
         setting_layout.insertWidget(-1, self.config)

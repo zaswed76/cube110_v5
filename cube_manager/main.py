@@ -11,13 +11,15 @@ from cube_manager import menu_window
 
 
 
+
+
 class BaseWindow(QtGui.QMainWindow):
     def __init__(self):
         super().__init__()
         self.showFullScreen()
         self.center = gui.MenegerFrame("center_frame")
         self.setCentralWidget(self.center)
-        box = gui.Box(gui.Box._horizontal, self.center)
+        box = gui.Box(gui.Box._horizontal, self.center, 0, 0)
         self.stack = gui.StackedLayout()
         box.addLayout(self.stack)
 
