@@ -1,4 +1,45 @@
 
+QFrame#center_frame {
+    background-color: gray;
+}
+
+QFrame#global_menu {
+    background-color: white;
+}
+
+QFrame#display {
+    background-color: lightgray;
+}
+
+QFrame#tool_game {
+    background-color: #858C90;
+}
+
+QFrame#setting {
+    background-color: #3e5a57;
+}
+/*-------------SETTINGS_BUTTONS-----------------*/
+
+QPushButton#exit_button {
+    /*border: none;*/
+    border-image: url(./resources/icons/64/exit.png);
+
+}
+
+QPushButton#config_button {
+    /*border: none;*/
+    border-image: url(./resources/icons/64/config.png);
+
+}
+
+QPushButton#volume_button {
+    /*border: none;*/
+    border-image: url(./resources/icons/64/volume.png);
+
+}
+
+/*-----------------------------------------------*/
+
 
 EditWindow {
     background-color: #E5E5E5;

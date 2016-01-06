@@ -6,6 +6,7 @@ import os
 from PyQt4 import QtGui, QtCore
 import paths
 from edit_scr import edit_main
+from cube_manager import main
 from libs import data
 
 
@@ -15,6 +16,6 @@ css_path = os.path.join(paths.get_css_dir(), css_default)
 
 app = QtGui.QApplication(sys.argv)
 app.setStyleSheet(open('{}'.format(css_path), "r").read())
-m = edit_main.EditWindow()
+m = main.BaseWindow()
 m.show()
 sys.exit(app.exec_())
