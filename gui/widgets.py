@@ -25,6 +25,7 @@ class Box(QtGui.QBoxLayout):
         self.setMargin(margin)
         self.setSpacing(spacing)
 
+
 class SettingButton(QtGui.QPushButton):
     def __init__(self, name, size):
 
@@ -37,7 +38,7 @@ class SettingButton(QtGui.QPushButton):
         super().__init__()
         self.setObjectName(name)
         self.setIconSize(QtCore.QSize(size, size))
-        self.setFixedSize(size, size)
+        self.setFixedSize(size+2, size+2)
 
 
 class Frame(QtGui.QFrame):
@@ -45,6 +46,9 @@ class Frame(QtGui.QFrame):
         super().__init__(parent)
         self.setObjectName(name)
         self.setParent(parent)
+
+
+
 
 
 class MenegerFrame(Frame):

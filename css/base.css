@@ -13,6 +13,9 @@ QFrame#display {
 
 QFrame#tool_game {
     background-color: #858C90;
+    border-image: url(./resources/icons/texture/game.png);
+    background-position: center;
+
 }
 
 QFrame#setting {
@@ -21,20 +24,32 @@ QFrame#setting {
 /*-------------SETTINGS_BUTTONS-----------------*/
 
 QPushButton#exit_button {
-    /*border: none;*/
     border-image: url(./resources/icons/64/exit.png);
+}
 
+QPushButton#exit_button:hover {
+    border-image: url(./resources/icons/64/exit_hover.png);
 }
 
 QPushButton#config_button {
     /*border: none;*/
     border-image: url(./resources/icons/64/config.png);
+}
 
+QPushButton#config_button:hover {
+    /*border: none;*/
+    border-image: url(./resources/icons/64/config_hover.png);
 }
 
 QPushButton#volume_button {
     /*border: none;*/
     border-image: url(./resources/icons/64/volume.png);
+
+}
+
+QPushButton#volume_button:hover {
+    /*border: none;*/
+    border-image: url(./resources/icons/64/volume_hover.png);
 
 }
 
