@@ -17,9 +17,10 @@ stretch_setting_widget = 2
 class GlobalMenu(gui.MenegerFrame):
 
 
-    def __init__(self, name, parent=None):
+    def __init__(self, name, parent=None, visual_parent=None):
         super().__init__(name, parent)
-        self.setParent(parent)
+        self.parent = parent
+        self.setParent(visual_parent)
 
         self.tool_game_widget = gui.ToolGame("tool_game")
         self.setting_widget = gui.ToolGame("setting")
@@ -47,8 +48,10 @@ class GlobalMenu(gui.MenegerFrame):
         setting_layout.insertWidget(-1, self.exit)
         setting_layout.insertSpacing(-1, 5)
 
-    def setting_button(self, name):
-        pass
+        self.init_contro()
+
+    def init_contro(self):
+        self.parent.register_control(self.exit, "exit")
 
 
 

@@ -3,14 +3,9 @@
 
 import sys
 from PyQt4 import QtGui
-
-
-
+from PyQt4.QtCore import QObject, pyqtSlot
 from gui import widgets as gui
 from cube_manager import menu_window
-
-
-
 
 
 class BaseWindow(QtGui.QMainWindow):
@@ -23,13 +18,16 @@ class BaseWindow(QtGui.QMainWindow):
         self.stack = gui.StackedLayout()
         box.addLayout(self.stack)
 
-        self.menu = menu_window.GlobalMenu("global_menu", parent=self.center)
+        self.menu = menu_window.GlobalMenu("global_menu", parent=self,
+                                           visual_parent=self.center)
         self.stack.addWidget(self.menu)
 
+    def register_control(self, control_object, slot, *args):
+        control_object.clicked.connect(getattr(self, slot))
 
-
-
-
+    @pyqtSlot()
+    def exit(self):
+        sys.exit()
 
 
 if __name__ == '__main__':
