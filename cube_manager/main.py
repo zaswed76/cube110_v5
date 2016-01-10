@@ -15,6 +15,7 @@ class BaseWindow(QtGui.QMainWindow):
         self.center = gui.MenegerFrame("center_frame")
         self.setCentralWidget(self.center)
         box = gui.Box(gui.Box._horizontal, self.center, 0, 0)
+
         self.stack = gui.StackedLayout()
         box.addLayout(self.stack)
 
@@ -28,6 +29,10 @@ class BaseWindow(QtGui.QMainWindow):
     @pyqtSlot()
     def exit(self):
         sys.exit()
+
+    def add_game(self, game):
+        self.stack.addWidget(game)
+
 
 
 if __name__ == '__main__':

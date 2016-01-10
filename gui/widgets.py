@@ -41,6 +41,7 @@ class SettingButton(QtGui.QPushButton):
         self.setFixedSize(size+2, size+2)
 
 
+
 class Frame(QtGui.QFrame):
     def __init__(self, name, parent):
         super().__init__(parent)

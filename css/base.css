@@ -1,25 +1,45 @@
 
 QFrame#center_frame {
-    background-color: gray;
+    background-color: #535353;
 }
 
 QFrame#global_menu {
-    background-color: white;
+    background-color: lightgray;
+    margin-left: 90px;
+    margin-right: 90px;
+
+    border: 1px solid lightgray;
+    border-radius: 20px;
 }
 
 QFrame#display {
     background-color: lightgray;
+    margin-right: auto;
 }
 
 QFrame#tool_game {
-    background-color: #858C90;
-    border-image: url(./resources/icons/texture/game.png);
+    background-color: lightgray;
+    /*border-image: url(./resources/icons/texture/game.png);*/
     background-position: center;
+    border-right: 1px solid #adadad;
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid lightgray;;
+    margin-left: 20px;
+    margin-right: auto;
+
 
 }
 
 QFrame#setting {
-    background-color: #3e5a57;
+    background-color: lightgray;
+    border-top: 1px solid #adadad;
+    border-right: 1px solid #adadad;
+    border-left: 1px solid #adadad;
+    border-bottom: 1px solid #adadad;;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
 /*-------------SETTINGS_BUTTONS-----------------*/
 
@@ -74,14 +94,14 @@ Group {
     background-color: #aeaeaf;
     border: 1px solid white;
     border-radius: 6px;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 QToolButton#return
 {
     /*noinspection CssUnknownTarget*/
     border-image: url(./resources/icons/return.png);
-    margin-left: 8px;
+    /*margin-left: 8px;*/
 
 }
 
@@ -90,7 +110,7 @@ QToolButton#next
 {
     /*noinspection CssUnknownTarget*/
     border-image: url(./resources/icons/next.png);
-    margin-right: 8px;
+    /*margin-right: 8px;*/
 
 }
 

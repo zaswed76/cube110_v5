@@ -7,23 +7,34 @@ from gui import widgets as gui
 
 icon_setting_size = 44
 spacing_setting = 28
-margin_setting = 7
+margin_setting = 0
 stretch_game_tool = 2
-stretch_display_layout = 9
+stretch_display_layout = 11
 stretch_display_widget = 35
 stretch_setting_widget = 2
 
 
-class GlobalMenu(gui.MenegerFrame):
+class GameBox(gui.Frame):
+    def __init__(self, name, parent):
+        super().__init__(name, parent)
+        self.box = gui.Box(gui.Box._vertical, self, 0, 0)
+        self.box.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignCenter)
 
+    def add_game_control(self, controll):
+        pass
+
+
+class GlobalMenu(gui.MenegerFrame):
 
     def __init__(self, name, parent=None, visual_parent=None):
         super().__init__(name, parent)
         self.parent = parent
         self.setParent(visual_parent)
 
-        self.tool_game_widget = gui.ToolGame("tool_game")
+        self.tool_game_widget = GameBox("tool_game", self)
+        # self.tool_game_widget.setFixedWidth(270)
         self.setting_widget = gui.ToolGame("setting")
+        # self.setting_widget.setSizePolicy(QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed))
         self.display_widget = gui.ToolGame("display")
 
         self.exit = gui.SettingButton("exit_button", icon_setting_size)
@@ -32,7 +43,7 @@ class GlobalMenu(gui.MenegerFrame):
 
         display_layout = gui.Box(gui.Box._vertical, None, 0, 0)
         box_base = gui.Box(gui.Box._horizontal, self, 0, 0)
-        setting_layout = gui.Box(gui.Box._horizontal,
+        self.setting_layout = gui.Box(gui.Box._horizontal,
                                  QWidget_parent=self.setting_widget,
                                  spacing=spacing_setting,
                                  margin=margin_setting)
@@ -42,17 +53,23 @@ class GlobalMenu(gui.MenegerFrame):
         display_layout.addWidget(self.display_widget, stretch_display_widget)
         display_layout.addWidget(self.setting_widget, stretch_setting_widget)
 
-        setting_layout.addStretch(1)
-        setting_layout.insertWidget(-1, self.config)
-        setting_layout.insertWidget(-1, self.volume)
-        setting_layout.insertWidget(-1, self.exit)
-        setting_layout.insertSpacing(-1, 5)
 
-        self.init_contro()
+        self.add_setting_buttons()
+        self.set_actions_setting_buttons()
 
-    def init_contro(self):
+    def add_setting_buttons(self):
+        self.setting_layout.addStretch(1)
+        self.setting_layout.insertWidget(-1, self.config)
+        self.setting_layout.insertWidget(-1, self.volume)
+        self.setting_layout.insertWidget(-1, self.exit)
+        self.setting_layout.addStretch(1)
+        # self.setting_layout.insertSpacing(-1, 5)
+
+    def set_actions_setting_buttons(self):
         self.parent.register_control(self.exit, "exit")
 
+    def add_game_controls(self):
+        pass
 
 
 if __name__ == '__main__':
