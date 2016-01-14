@@ -3,17 +3,15 @@
 
 
 from PyQt4 import QtGui, QtCore
+from gui import widgets as gui
 
 margin = 8
 spacing = 10
 icon_size=16
 
-class ToolButton(QtGui.QToolButton):
-    def __init__(self, name, parent=None):
-        super().__init__()
-        self.parent = parent
-        self.name = name
-        self.setObjectName(name)
+
+
+
 
 
 class Group(QtGui.QFrame):
@@ -44,6 +42,6 @@ class Tool(QtGui.QToolBar):
         group.setFixedWidth(120)
 
         for name in actions_name:
-            self.button[name] = ToolButton(name, self)
+            self.button[name] = gui.ToolButton(name, self)
             group.add_action(self.button[name])
         self.addWidget(group)

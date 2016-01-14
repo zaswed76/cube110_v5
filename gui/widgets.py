@@ -1,17 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+import os
 from PyQt4 import QtGui, QtCore
-
-
 
 margin = 4
 spacing = 4
-
-
-
-
 
 
 class Box(QtGui.QBoxLayout):
@@ -26,9 +20,49 @@ class Box(QtGui.QBoxLayout):
         self.setSpacing(spacing)
 
 
+class ToolButton(QtGui.QToolButton):
+    def __init__(self, name, parent=None):
+        super().__init__()
+        self.parent = parent
+        self._name = name
+        self.setObjectName(self.name)
+
+    @property
+    def name(self):
+        return str(self._name)
+
+    @name.setter
+    def name(self, name):
+        self._name = str(name)
+
+
+class GameButton(ToolButton):
+    _name_button = "game_button"
+
+    def __init__(self, name, index, icon_path):
+        super().__init__(name)
+        self.icon_path = icon_path
+        self.index = index
+        self._name = name
+        self.name = self._name_button + str(name)
+        self.add_icon(self.icon_path)
+
+    def add_icon(self, icon_path):
+        if not os.path.isfile(icon_path):
+            self.setText("NOT\nICON")
+        else:
+            self.setIcon(QtGui.QIcon(icon_path))
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
 class SettingButton(QtGui.QPushButton):
     def __init__(self, name, size):
-
         """
 
         :type size_button: int
@@ -38,8 +72,7 @@ class SettingButton(QtGui.QPushButton):
         super().__init__()
         self.setObjectName(name)
         self.setIconSize(QtCore.QSize(size, size))
-        self.setFixedSize(size+2, size+2)
-
+        self.setFixedSize(size + 2, size + 2)
 
 
 class Frame(QtGui.QFrame):
@@ -47,9 +80,6 @@ class Frame(QtGui.QFrame):
         super().__init__(parent)
         self.setObjectName(name)
         self.setParent(parent)
-
-
-
 
 
 class MenegerFrame(Frame):

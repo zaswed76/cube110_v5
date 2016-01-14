@@ -24,10 +24,14 @@ _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
 
 class WidgetPlugin(QtGui.QFrame):
+    """
+    aaa
+    """
     _root_path = os.path.dirname(__file__)
 
 
     def __init__(self):
+
         super().__init__()
         self._index = 1
         self._tool_icon = None
@@ -64,7 +68,13 @@ class WidgetPlugin(QtGui.QFrame):
         self._root_path = path
 
     def __repr__(self):
-        return self
+        return '''
+        object - {}
+        index - {}
+        tool_icon - {}'''.format(
+                self.__class__.__name__,
+        self.index, self.tool_icon)
+
 
 
 class AdapterPluginsGame:

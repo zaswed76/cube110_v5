@@ -6,6 +6,7 @@ from PyQt4 import QtGui, QtCore
 from gui import widgets as gui
 
 icon_setting_size = 44
+icon_game_size = 64
 spacing_setting = 28
 margin_setting = 0
 stretch_game_tool = 2
@@ -20,8 +21,14 @@ class GameBox(gui.Frame):
         self.box = gui.Box(gui.Box._vertical, self, 0, 0)
         self.box.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignCenter)
 
-    def add_game_control(self, controll):
-        pass
+    def create_button(self, index, path_icon):
+        button = gui.GameButton("", index, path_icon)
+        button.setIconSize(QtCore.QSize(icon_game_size, icon_game_size))
+        button.setFixedSize(icon_game_size, icon_game_size)
+        self.box.insertWidget(index, button)
+        return button
+
+
 
 
 class GlobalMenu(gui.MenegerFrame):
@@ -31,10 +38,10 @@ class GlobalMenu(gui.MenegerFrame):
         self.parent = parent
         self.setParent(visual_parent)
 
-        self.tool_game_widget = GameBox("tool_game", self)
-        # self.tool_game_widget.setFixedWidth(270)
+        self.tool_game_box = GameBox("tool_game", self)
+
         self.setting_widget = gui.ToolGame("setting")
-        # self.setting_widget.setSizePolicy(QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed))
+
         self.display_widget = gui.ToolGame("display")
 
         self.exit = gui.SettingButton("exit_button", icon_setting_size)
@@ -48,7 +55,7 @@ class GlobalMenu(gui.MenegerFrame):
                                  spacing=spacing_setting,
                                  margin=margin_setting)
 
-        box_base.addWidget(self.tool_game_widget, stretch_game_tool)
+        box_base.addWidget(self.tool_game_box, stretch_game_tool)
         box_base.addLayout(display_layout, stretch_display_layout)
         display_layout.addWidget(self.display_widget, stretch_display_widget)
         display_layout.addWidget(self.setting_widget, stretch_setting_widget)
@@ -68,9 +75,16 @@ class GlobalMenu(gui.MenegerFrame):
     def set_actions_setting_buttons(self):
         self.parent.register_control(self.exit, "exit")
 
-    def add_game_controls(self):
-        pass
+    def create_game_button(self, index, icon_path):
+        return self.tool_game_box.create_button(index, icon_path)
 
+    def add_plagin_game(self, game_plugins):
+        for index, widg in enumerate(game_plugins):
+            icon = widg.tool_icon
+            self.controls.append(gui.GameButton("name", index, icon))
+            self.controls[index].clicked.connect(self.press_game)
+            self.global_game_window.tool_game_box.add_game_control(
+                    self.controls[index])
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

@@ -121,3 +121,10 @@ QToolButton#prev
     border-image: url(./resources/icons/prev.png);
 }
 
+GameButton {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    /*background-color: #aeaeaf;*/
+}
