@@ -2,12 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
 from functools import partial
 from PyQt4 import QtGui
-from PyQt4.QtCore import QObject, pyqtSlot
+from PyQt4.QtCore import pyqtSlot
+import paths
 from gui import widgets as gui
 from cube_manager import menu_window
 from libs import plugin
+
+
+from edit_scr import edit_main
+from libs import data
+
+
+
 
 
 class BaseWindow(QtGui.QMainWindow):
@@ -66,7 +75,17 @@ class BaseWindow(QtGui.QMainWindow):
 
 
 if __name__ == '__main__':
+
+
+    css_default = "base.css"
+    css_path = os.path.join(paths.get_css_dir(), css_default)
+    {}
+
     app = QtGui.QApplication(sys.argv)
-    main = BaseWindow()
-    main.show()
+    app.addLibraryPath("/cube110_v5/games")
+    print(app.libraryPaths())
+    app.setStyleSheet(open('{}'.format(css_path), "r").read())
+    m = BaseWindow()
+    m.add_games()
+    m.show()
     sys.exit(app.exec_())
