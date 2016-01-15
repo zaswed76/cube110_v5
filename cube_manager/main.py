@@ -77,13 +77,13 @@ class BaseWindow(QtGui.QMainWindow):
 if __name__ == '__main__':
 
 
-    css_default = "base.css"
+    css_default = "user1.css"
     css_path = os.path.join(paths.get_css_dir(), css_default)
-    {}
+
 
     app = QtGui.QApplication(sys.argv)
-    app.addLibraryPath("/cube110_v5/games")
-    print(app.libraryPaths())
+    # app.addLibraryPath("/home/serg/project/cube110_v5/libs")
+    # print(app.libraryPaths())
     app.setStyleSheet(open('{}'.format(css_path), "r").read())
     m = BaseWindow()
     m.add_games()

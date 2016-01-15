@@ -6,7 +6,7 @@ from PyQt4 import QtGui, QtCore
 from gui import widgets as gui
 
 icon_setting_size = 44
-icon_game_size = 64
+icon_game_size = 128
 spacing_setting = 28
 margin_setting = 0
 stretch_game_tool = 2
@@ -18,7 +18,7 @@ stretch_setting_widget = 2
 class GameBox(gui.Frame):
     def __init__(self, name, parent):
         super().__init__(name, parent)
-        self.box = gui.Box(gui.Box._vertical, self, 0, 0)
+        self.box = gui.Box(gui.Box._vertical, self, 50, 50)
         self.box.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignCenter)
 
     def create_button(self, index, path_icon):
