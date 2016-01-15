@@ -25,3 +25,4 @@ m.add_games()
 # m.create_tool_buttons()
 m.show()
 sys.exit(app.exec_())
+

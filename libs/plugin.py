@@ -34,7 +34,8 @@ class WidgetPlugin(QtGui.QFrame):
 
         super().__init__()
         self._index = 1
-        self._tool_icon = None
+        self._tool_icon = os.path.join(self.root_path, "resource/icons",
+                                      "tool.png")
 
     @property
     def index(self):

@@ -39,7 +39,7 @@ class BaseWindow(QtGui.QMainWindow):
         self.global_game_window = menu_window.GlobalMenu(
                 "global_menu", parent=self,
                 visual_parent=self.center)
-        self.stack.addWidget(self.global_game_window)
+        self.stack.add_widget(self.global_game_window)
 
 
     def register_control(self, control_object, slot, *args):

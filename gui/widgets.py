@@ -125,7 +125,7 @@ class StackedLayout(QtGui.QStackedLayout):
     def __init__(self, parent=None, *__args):
         super().__init__(*__args)
 
-    # def setCurrentIndex(self, index):
-    #     self.fader_widget = FaderWidget(self.currentWidget(),
-    #                                     self.widget(index))
-    #     QtGui.QStackedLayout.setCurrentIndex(self, index)
+
+    def add_widget(self, QWidget):
+        self.addWidget(QWidget)
+
