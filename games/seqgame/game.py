@@ -21,9 +21,8 @@ class GamePlugin(plugin.WidgetPlugin):
         self.box = QtGui.QVBoxLayout(self)
         self.box.setMargin(0)
         self.box.setSpacing(0)
-        self.label = QtGui.QLabel("1")
-        self.label.setPixmap(QtGui.QPixmap(self.tool_icon).scaled(178, 178))
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label = QtGui.QPushButton()
+        self.label.setIcon(QtGui.QIcon(self.tool_icon))
         self.box.addWidget(self.label)
 
     def __doc__(self):

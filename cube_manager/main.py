@@ -32,6 +32,7 @@ class BaseWindow(QtGui.QMainWindow):
                 visual_parent=self.center)
         self.stack.addWidget(self.global_game_window)
 
+
     def register_control(self, control_object, slot, *args):
         control_object.clicked.connect(getattr(self, slot))
 
@@ -46,6 +47,7 @@ class BaseWindow(QtGui.QMainWindow):
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
+            game_widget.label.clicked.connect(self.return_to_global_window)
             self.stack.addWidget(game_widget)
             index = game_widget.index
             icon = game_widget.tool_icon
@@ -58,6 +60,9 @@ class BaseWindow(QtGui.QMainWindow):
     def press_game(self, s):
         pass
         self.stack.setCurrentIndex(s)
+
+    def return_to_global_window(self):
+        self.stack.setCurrentIndex(0)
 
 
 if __name__ == '__main__':

@@ -15,15 +15,14 @@ class GamePlugin(plugin.WidgetPlugin):
         super().__init__()
         self.resize(500, 500)
         self.root_path = os.path.dirname(__file__)
-        self.index = 2
+        self.index = 1
         self.tool_icon = os.path.join(self.root_path, "resource/icons",
                                       "tool.png")
         self.box = QtGui.QVBoxLayout(self)
         self.box.setMargin(0)
         self.box.setSpacing(0)
-        self.label = QtGui.QLabel("1")
-        self.label.setPixmap(QtGui.QPixmap(self.tool_icon).scaled(178, 178))
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label = QtGui.QPushButton()
+        self.label.setIcon(QtGui.QIcon(self.tool_icon))
         self.box.addWidget(self.label)
 
     def __doc__(self):

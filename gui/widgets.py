@@ -103,7 +103,7 @@ class FaderWidget(QtGui.QWidget):
         self.timeline = QtCore.QTimeLine()
         self.timeline.valueChanged.connect(self.animate)
         self.timeline.finished.connect(self.close)
-        self.timeline.setDuration(333)
+        self.timeline.setDuration(999)
         self.timeline.start()
 
         self.resize(new_widget.size())
@@ -125,7 +125,7 @@ class StackedLayout(QtGui.QStackedLayout):
     def __init__(self, parent=None, *__args):
         super().__init__(*__args)
 
-    def setCurrentIndex(self, index):
-        self.fader_widget = FaderWidget(self.currentWidget(),
-                                        self.widget(index))
-        QtGui.QStackedLayout.setCurrentIndex(self, index)
+    # def setCurrentIndex(self, index):
+    #     self.fader_widget = FaderWidget(self.currentWidget(),
+    #                                     self.widget(index))
+    #     QtGui.QStackedLayout.setCurrentIndex(self, index)
