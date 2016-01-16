@@ -17,3 +17,4 @@ _icons_path = join(_root_path, _resource, _icons)
 _tool_icon = join(_icons_path, _tool_name_icon)
 _tool_icon_hover = join(_icons_path, _tool_name_icon_hover)
 _tool_icon_pressed = join(_icons_path, _tool_name_icon_pressed)
+_index = 2
