@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from game_plugin import *
 
 
-from os.path import dirname, join
+from game_plugin.default_conf import *
 
-#
-# _resource = "resource"
-# _icons = "icons"
-# _tool_name_icon = "tool.png"
-# _tool_name_icon_hover = "tool_hover.png"
-# _tool_name_icon_pressed = "tool_pressed.png"
-#
-#
-# _root_path = dirname(__file__)
-# _icons_path = join(_root_path, _resource, _icons)
-#
-# _tool_icon = join(_icons_path, _tool_name_icon)
-# _tool_icon_hover = join(_icons_path, _tool_name_icon_hover)
-# _tool_icon_pressed = join(_icons_path, _tool_name_icon_pressed)
-# _index = 1
-print(default_conf._icons)
+root_path = dirname(__file__)
+
+# resource = "resource"
+# icons = "icons"
+# tool_name_icon = "tool2.png"
+# tool_name_icon_hover = "tool_hover.png"
+# tool_name_icon_pressed = "tool_pressed.png"
+# style_name = "base.css"
+
+
+icons_path = join(root_path, resource, icons)
+
+object_name = "seqgame"
+tool_object_name = "seqgametool"
+style_path = join(root_path, style_name)
+tool_icon = join(icons_path, tool_name_icon)
+tool_icon_hover = join(icons_path, tool_name_icon_hover)
+tool_icon_pressed = join(icons_path, tool_name_icon_pressed)
+index = 2

@@ -27,7 +27,7 @@ class BaseWindow(QtGui.QMainWindow):
         self.setCentralWidget(self.center)
 
         self.adapter_plugin = plugin.AdapterPluginsGame(
-                "games", 'game', "GamePlugin")
+                "game_plugin", 'game', "GamePlugin")
         self.game_widgets = []
         self.controls = []
 
@@ -52,18 +52,18 @@ class BaseWindow(QtGui.QMainWindow):
     def add_game(self, game):
         self.stack.addWidget(game)
 
-    def add_games(self, ):
+    def add_games(self):
+
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
             game_widget.label.clicked.connect(self.return_to_global_window)
             self.stack.addWidget(game_widget)
             index = game_widget.index
-            icon = game_widget.tool_icon
-            button = self.global_game_window.create_game_button(
-                index,
-                icon)
+            options = game_widget.options
+            button = self.global_game_window.create_game_button(options)
             button.clicked.connect(partial(self.press_game, index))
+
 
     @pyqtSlot(int)
     def press_game(self, s):

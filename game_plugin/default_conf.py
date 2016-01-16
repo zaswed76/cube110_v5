@@ -4,20 +4,22 @@
 from os.path import dirname, join
 
 
-_resource = "resource"
-_icons = "icons"
-_tool_name_icon = "tool.png"
-_tool_name_icon_hover = "tool_hover.png"
-_tool_name_icon_pressed = "tool_pressed.png"
+resource = "resource"
+icons = "icons"
+tool_name_icon = "tool.png"
+tool_name_icon_hover = "tool_hover.png"
+tool_name_icon_pressed = "tool_pressed.png"
+style_name = "base.css"
 
 
-_root_path = dirname(__file__)
-_icons_path = join(_root_path, _resource, _icons)
+root_path = dirname(__file__)
+icons_path = join(root_path, resource, icons)
 
-_tool_icon = join(_icons_path, _tool_name_icon)
-_tool_icon_hover = join(_icons_path, _tool_name_icon_hover)
-_tool_icon_pressed = join(_icons_path, _tool_name_icon_pressed)
-_index = 1
-
+object_name = "none"
+tool_name = "none"
+tool_icon = join(root_path, resource, icons, tool_name_icon)
+tool_icon_hover = join(icons_path, tool_name_icon_hover)
+tool_icon_pressed = join(icons_path, tool_name_icon_pressed)
+index = 1
 
 

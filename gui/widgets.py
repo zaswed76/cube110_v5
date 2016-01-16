@@ -25,6 +25,7 @@ class ToolButton(QtGui.QToolButton):
         super().__init__()
         self.parent = parent
         self._name = name
+        print(self._name, "OBJ")
         self.setObjectName(self.name)
 
     @property
@@ -33,19 +34,26 @@ class ToolButton(QtGui.QToolButton):
 
     @name.setter
     def name(self, name):
+        print(name)
         self._name = str(name)
 
 
 class GameButton(ToolButton):
     _name_button = "game_button"
 
-    def __init__(self, name, index, icon_path):
-        super().__init__(name)
-        self.icon_path = icon_path
-        self.index = index
-        self._name = name
-        self.name = self._name_button + str(name)
-        self.add_icon(self.icon_path)
+    def __init__(self, options):
+        super().__init__(options['tool_icon_objectname'])
+
+        self.icon_path = options['tool_icon']
+        self.icon_path_hover = options['tool_icon_hover']
+        self.index = options['index']
+        self._name = options['tool_icon_objectname']
+        # # self.name = self._name_button + str(options['name'])
+        # print(options['tool_icon_objectname'], "EEEE")
+        self.setObjectName(self._name)
+
+
+
 
     def add_icon(self, icon_path):
         if not os.path.isfile(icon_path):

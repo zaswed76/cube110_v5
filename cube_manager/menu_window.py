@@ -6,7 +6,7 @@ from PyQt4 import QtGui, QtCore
 from gui import widgets as gui
 
 icon_setting_size = 44
-icon_game_size = 128
+icon_game_size = 64
 spacing_setting = 28
 margin_setting = 0
 stretch_game_tool = 2
@@ -21,11 +21,11 @@ class GameBox(gui.Frame):
         self.box = gui.Box(gui.Box._vertical, self, 50, 50)
         self.box.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignCenter)
 
-    def create_button(self, index, path_icon):
-        button = gui.GameButton("", index, path_icon)
+    def create_button(self, options):
+        button = gui.GameButton(options)
         button.setIconSize(QtCore.QSize(icon_game_size, icon_game_size))
         button.setFixedSize(icon_game_size, icon_game_size)
-        self.box.insertWidget(index, button)
+        self.box.insertWidget(options["index"], button)
         return button
 
 
@@ -75,8 +75,8 @@ class GlobalMenu(gui.MenegerFrame):
     def set_actions_setting_buttons(self):
         self.parent.register_control(self.exit, "exit")
 
-    def create_game_button(self, index, icon_path):
-        return self.tool_game_box.create_button(index, icon_path)
+    def create_game_button(self, options):
+        return self.tool_game_box.create_button(options)
 
     def add_plagin_game(self, game_plugins):
         for index, widg in enumerate(game_plugins):

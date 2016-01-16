@@ -7,7 +7,7 @@ import glob
 from importlib import import_module
 from PyQt4 import QtGui
 
-_plugin_dir = "plugins"
+_plugin_dir = "game_plugin"
 _mod_name = "game"
 _class_name = "GamePlugin"
 
