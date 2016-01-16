@@ -27,12 +27,13 @@ class WidgetPlugin(QtGui.QFrame):
     """
     aaa
     """
-    _root_path = os.path.dirname(__file__)
+
 
 
     def __init__(self):
 
         super().__init__()
+        self._root_path = os.path.dirname(__file__)
         self._index = 1
         self._tool_icon = os.path.join(self.root_path, "resource/icons",
                                       "tool.png")
@@ -62,6 +63,7 @@ class WidgetPlugin(QtGui.QFrame):
 
     @property
     def root_path(self):
+        print(111)
         return self._root_path
 
     @root_path.setter
