@@ -7,13 +7,10 @@ from PyQt4 import QtGui, QtCore
 from libs import plugin
 from game_plugin.seqgame import conf
 
-print(conf.tool_icon, "!!!!!!!!!!!")
+print(dir(conf))
 
 
 class GamePlugin(plugin.WidgetPlugin):
-    """
-    bbb
-    """
 
     def __init__(self):
         super().__init__()

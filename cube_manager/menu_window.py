@@ -24,7 +24,7 @@ class GameBox(gui.Frame):
     def create_button(self, options):
         button = gui.GameButton(options)
         button.setIconSize(QtCore.QSize(icon_game_size, icon_game_size))
-        button.setFixedSize(icon_game_size, icon_game_size)
+        # button.setFixedSize(icon_game_size, icon_game_size)
         self.box.insertWidget(options["index"], button)
         return button
 
