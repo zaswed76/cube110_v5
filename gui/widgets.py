@@ -14,6 +14,13 @@ class Box(QtGui.QBoxLayout):
 
     def __init__(self, direction, QWidget_parent=None,
                  margin=margin, spacing=spacing):
+        """
+
+        :param direction: Box._horizontal \ Box._vertical
+        :param QWidget_parent: QWidget
+        :param margin: поле вокруг
+        :param spacing: интервал (шаг) между виджетами
+        """
         super().__init__(direction, QWidget_parent)
         self.setDirection(direction)
         self.setMargin(margin)
@@ -25,7 +32,6 @@ class ToolButton(QtGui.QToolButton):
         super().__init__()
         self.parent = parent
         self._name = name
-        print(self._name, "OBJ")
         self.setObjectName(self.name)
 
     @property
@@ -39,35 +45,18 @@ class ToolButton(QtGui.QToolButton):
 
 
 class GameButton(ToolButton):
-    _name_button = "game_button"
-
-    def __init__(self, options):
-        super().__init__(options['tool_icon_objectname'])
-
-        self.icon_path = options['tool_icon']
-        self.icon_path_hover = options['tool_icon_hover']
-        self.index = options['index']
-        self._name = options['tool_icon_objectname']
-        # # self.name = self._name_button + str(options['name'])
-        # print(options['tool_icon_objectname'], "EEEE")
+    def __init__(self, object_name, index):
+        super().__init__(object_name)
+        self.index = index
         self.setObjectName(self._name)
 
+    def __repr__(self):
+        return """
+        object - {};
+        object_name - {};
+        index - {}
+        """.format(self.__class__.__name__, self._name, self.index)
 
-
-
-    def add_icon(self, icon_path):
-        if not os.path.isfile(icon_path):
-            self.setText("NOT\nICON")
-        else:
-            self.setIcon(QtGui.QIcon(icon_path))
-
-    @property
-    def name(self):
-        return self._name
-
-    @name.setter
-    def name(self, name):
-        self._name = name
 
 class SettingButton(QtGui.QPushButton):
     def __init__(self, name, size):

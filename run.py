@@ -3,26 +3,26 @@
 
 import sys
 import os
-from PyQt4 import QtGui, QtCore
+import yaml
+from PyQt4 import QtGui
 import paths
-from edit_scr import edit_main
 from cube_manager import main
-from libs import data
 
+def get_data(path):
+    with open(path, "r") as obj:
+        return yaml.load(obj)
 
 
 css_default = "base.css"
+config_default = "etc/config.yaml"
 css_path = os.path.join(paths.get_css_dir(), css_default)
 
 app = QtGui.QApplication(sys.argv)
-app.addLibraryPath("/cube110_v5/games")
-print(app.libraryPaths())
 app.setStyleSheet(open('{}'.format(css_path), "r").read())
-m = main.BaseWindow()
+config = get_data(config_default)
+m = main.BaseWindow(config)
 m.add_games()
-# m.stack.setCurrentIndex(0)
-# m.add_games_to_stack()
-# m.create_tool_buttons()
+
 m.show()
 sys.exit(app.exec_())
 

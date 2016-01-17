@@ -4,6 +4,7 @@
 import sys
 import os
 from functools import partial
+import yaml
 from PyQt4 import QtGui
 from PyQt4.QtCore import pyqtSlot
 import paths
@@ -12,16 +13,11 @@ from cube_manager import menu_window
 from libs import plugin
 
 
-from edit_scr import edit_main
-from libs import data
-
-
-
-
-
 class BaseWindow(QtGui.QMainWindow):
-    def __init__(self):
+    def __init__(self, config):
         super().__init__()
+        self.config = config
+        print(type(self.config['global_game_window']['spacing_setting']))
         self.showFullScreen()
         self.center = gui.MenegerFrame("center_frame")
         self.setCentralWidget(self.center)
@@ -38,7 +34,8 @@ class BaseWindow(QtGui.QMainWindow):
 
         self.global_game_window = menu_window.GlobalMenu(
                 "global_menu", parent=self,
-                visual_parent=self.center)
+                visual_parent=self.center,
+        config=config["global_game_window"])
         self.stack.add_widget(self.global_game_window)
 
 
@@ -57,11 +54,16 @@ class BaseWindow(QtGui.QMainWindow):
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
-            game_widget.label.clicked.connect(self.return_to_global_window)
-            self.stack.addWidget(game_widget)
             index = game_widget.index
-            options = game_widget.options
-            button = self.global_game_window.create_game_button(options)
+            button_name = game_widget.tool_button_name
+            home_btn = game_widget.home_btn
+
+            home_btn.clicked.connect(self.return_to_global_window)
+            self.stack.insertWidget(index, game_widget)
+
+
+
+            button = self.global_game_window.create_game_button(button_name, index)
             button.clicked.connect(partial(self.press_game, index))
 
 
@@ -87,5 +89,6 @@ if __name__ == '__main__':
     app.setStyleSheet(open('{}'.format(css_path), "r").read())
     m = BaseWindow()
     m.add_games()
+
     m.show()
     sys.exit(app.exec_())

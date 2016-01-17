@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
-import os
 import glob
+import os
+import sys
 from importlib import import_module
+
 from PyQt4 import QtGui
 
 _plugin_dir = "game_plugin"
 _mod_name = "game"
 _class_name = "GamePlugin"
+
 
 class ErrorIndex(Exception): pass
 
@@ -20,23 +22,22 @@ class ErrorChange(Exception): pass
 class ErrorType(Exception): pass
 
 
+class ErrorAbstract(Exception): pass
+
+
 _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
 
 class WidgetPlugin(QtGui.QFrame):
-    """
-    aaa
-    """
-
-
-
     def __init__(self):
-
         super().__init__()
         self._root_path = os.path.dirname(__file__)
         self._index = 1
-        self._tool_icon = os.path.join(self.root_path, "resource/icons",
-                                      "tool.png")
+
+    @property
+    def home_btn(self):
+        raise ErrorAbstract(
+            "должно вернуть ссылку на кнопку отвечающую за возврат в меню")
 
     @property
     def index(self):
@@ -50,20 +51,7 @@ class WidgetPlugin(QtGui.QFrame):
             raise ErrorIndex("индекс не может быть 0")
 
     @property
-    def tool_icon(self):
-        if self._tool_icon is None:
-            print("свойство < tool_icon > - иконка не установлена!")
-            return ""
-        else:
-            return self._tool_icon
-
-    @tool_icon.setter
-    def tool_icon(self, icon_path):
-        self._tool_icon = icon_path
-
-    @property
     def root_path(self):
-        print(111)
         return self._root_path
 
     @root_path.setter
@@ -75,9 +63,8 @@ class WidgetPlugin(QtGui.QFrame):
         object - {}
         index - {}
         tool_icon - {}'''.format(
-                self.__class__.__name__,
-        self.index, self.tool_icon)
-
+            self.__class__.__name__,
+            self.index, self.tool_icon)
 
 
 class AdapterPluginsGame:

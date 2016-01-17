@@ -23,4 +23,4 @@ style_path = join(root_path, style_name)
 tool_icon = join(icons_path, tool_name_icon)
 tool_icon_hover = join(icons_path, tool_name_icon_hover)
 tool_icon_pressed = join(icons_path, tool_name_icon_pressed)
-index = 2
+index = 1

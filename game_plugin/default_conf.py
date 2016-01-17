@@ -10,7 +10,7 @@ tool_name_icon = "tool.png"
 tool_name_icon_hover = "tool_hover.png"
 tool_name_icon_pressed = "tool_pressed.png"
 style_name = "base.css"
-
+style_dir = "css"
 
 root_path = dirname(__file__)
 icons_path = join(root_path, resource, icons)

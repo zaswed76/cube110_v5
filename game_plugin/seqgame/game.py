@@ -7,24 +7,20 @@ from PyQt4 import QtGui, QtCore
 from libs import plugin
 from game_plugin.seqgame import conf
 
-print(dir(conf))
 
 
 class GamePlugin(plugin.WidgetPlugin):
-
     def __init__(self):
         super().__init__()
         self.setObjectName(conf.object_name)
         self.root_path = os.path.dirname(__file__)
-        self.options = dict(
-                style_path = conf.style_path,
-                tool_icon_objectname = conf.tool_object_name,
-                name = conf.object_name,
-                index=conf.index,
-                tool_icon=conf.tool_icon,
-                tool_icon_hover=conf.tool_icon_hover,
-                tool_icon_pressed=conf.tool_icon_pressed
-        )
+
+        css_path = os.path.join(self.root_path, conf.style_dir,
+                                conf)
+        self.setStyleSheet(open('{}'.format(css_path), "r").read())
+
+        self.tool_button_name = conf.tool_object_name
+        self.index = conf.index
         self.box = QtGui.QVBoxLayout(self)
         self.box.setMargin(0)
         self.box.setSpacing(0)
@@ -32,8 +28,12 @@ class GamePlugin(plugin.WidgetPlugin):
         self.label.setObjectName('game1')
         self.label.setFixedSize(600, 600)
 
-        self.label.setIcon(QtGui.QIcon(self.tool_icon))
+        self.label.setText(str(self.index))
         self.box.addWidget(self.label, 0, QtCore.Qt.AlignCenter)
+
+    @property
+    def home_btn(self):
+        return self.label
 
     def __doc__(self):
         return "{}".format(plugin.WidgetPlugin)
