@@ -1,3 +1,3 @@
 cube110_v5
 
-__version__ = "0.017"
+__version__ = "0.018"
