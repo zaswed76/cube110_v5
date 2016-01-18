@@ -1,25 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-class Test2:
+import yaml
+
+class A:
     def __init__(self):
-        self._a = None
-        print("_a" in self.__dir__())
+        pass
 
-
-
-
-class A(Test2):
-    def __init__(self):
-        super().__init__()
-
-
-
-
-
-a = A()
-
-
+    def get_data(self, path):
+        with open(path, "r") as obj:
+            return yaml.load(obj)
 
 
 

@@ -29,16 +29,13 @@ _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 
 
 class WidgetPlugin(QtGui.QFrame):
-    def __init__(self):
+    def __init__(self, name, root_path, index, tool_btn_name, style_file):
         super().__init__()
-        self.object_name = None
-        self._root_path = os.path.dirname(__file__)
-        self._index = None
-        self.tool_button_name = None
-        self.setObjectName(None)
-
-
-
+        self.name = name
+        self.root_path = root_path
+        self.index = index
+        self.tool_btn_name = tool_btn_name
+        self.style_file = style_file
 
     def css_file(self, root, dir, file):
         return os.path.join(root, dir, file)

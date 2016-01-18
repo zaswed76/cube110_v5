@@ -1,33 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
 import os
-from PyQt4 import QtGui, QtCore
-from libs import plugin
-from game_plugin.seqgame import conf
+import sys
 
+from PyQt4 import QtGui
+
+from game_plugin.seqgame import conf as cfg
+from libs import plugin
+
+root_path = os.path.dirname(__file__)
 
 
 class GamePlugin(plugin.WidgetPlugin):
     def __init__(self):
-        super().__init__()
-        # self.object_name = conf.object_name
-        self.root_path = os.path.dirname(__file__)
-        self.index = conf.index
-        self.tool_button_name = conf.tool_object_name
-        self.setObjectName(self.object_name)
-
-
-
-
+        super().__init__(cfg.object_name, root_path, cfg.index,
+                         cfg.tool_object_name, cfg.style_name)
+        self.name = cfg.object_name
+        self.root_path = root_path
+        self.index = cfg.index
+        self.tool_btn_name = cfg.tool_object_name
+        self.setObjectName(self.name)
+        self.style_file = cfg.style_name
 
         self.exit_btn = QtGui.QPushButton("EXIT", self)
 
-        css_path = self.css_file(self.root_path, conf.style_dir,
-                                conf.style_name)
+        css_path = self.css_file(self.root_path, cfg.style_dir,
+                                 self.style_file)
         self.setStyleSheet(open('{}'.format(css_path), "r").read())
-
 
     @property
     def home_btn(self):

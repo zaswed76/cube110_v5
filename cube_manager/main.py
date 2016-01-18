@@ -54,9 +54,9 @@ class BaseWindow(QtGui.QMainWindow):
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
-            object_name = game_widget.object_name
+            object_name = game_widget.name
             index = game_widget.index
-            button_name = game_widget.tool_button_name
+            button_name = game_widget.tool_btn_name
             home_btn = game_widget.home_btn
 
             self.plugin_valid(index, button_name, object_name)
