@@ -12,28 +12,26 @@ from game_plugin.seqgame import conf
 class GamePlugin(plugin.WidgetPlugin):
     def __init__(self):
         super().__init__()
-        self.setObjectName(conf.object_name)
+        # self.object_name = conf.object_name
         self.root_path = os.path.dirname(__file__)
+        self.index = conf.index
+        self.tool_button_name = conf.tool_object_name
+        self.setObjectName(self.object_name)
 
-        css_path = os.path.join(self.root_path, conf.style_dir,
-                                conf)
+
+
+
+
+        self.exit_btn = QtGui.QPushButton("EXIT", self)
+
+        css_path = self.css_file(self.root_path, conf.style_dir,
+                                conf.style_name)
         self.setStyleSheet(open('{}'.format(css_path), "r").read())
 
-        self.tool_button_name = conf.tool_object_name
-        self.index = conf.index
-        self.box = QtGui.QVBoxLayout(self)
-        self.box.setMargin(0)
-        self.box.setSpacing(0)
-        self.label = QtGui.QPushButton()
-        self.label.setObjectName('game1')
-        self.label.setFixedSize(600, 600)
-
-        self.label.setText(str(self.index))
-        self.box.addWidget(self.label, 0, QtCore.Qt.AlignCenter)
 
     @property
     def home_btn(self):
-        return self.label
+        return self.exit_btn
 
     def __doc__(self):
         return "{}".format(plugin.WidgetPlugin)

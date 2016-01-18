@@ -54,9 +54,12 @@ class BaseWindow(QtGui.QMainWindow):
         mod_objects = self.adapter_plugin.plugin_objects(
                 self.adapter_plugin.paths)
         for game_widget in mod_objects:
+            object_name = game_widget.object_name
             index = game_widget.index
             button_name = game_widget.tool_button_name
             home_btn = game_widget.home_btn
+
+            self.plugin_valid(index, button_name, object_name)
 
             home_btn.clicked.connect(self.return_to_global_window)
             self.stack.insertWidget(index, game_widget)
@@ -66,6 +69,11 @@ class BaseWindow(QtGui.QMainWindow):
             button = self.global_game_window.create_game_button(button_name, index)
             button.clicked.connect(partial(self.press_game, index))
 
+    def plugin_valid(self, *atr):
+        for i in atr:
+            if i is None:
+
+                raise Exception("ERROR - {} not None".format(i))
 
     @pyqtSlot(int)
     def press_game(self, s):

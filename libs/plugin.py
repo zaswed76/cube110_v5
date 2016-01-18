@@ -31,8 +31,17 @@ _ERROR_CHANGE_MESSAGE = "нельзя изменить атрибут"
 class WidgetPlugin(QtGui.QFrame):
     def __init__(self):
         super().__init__()
+        self.object_name = None
         self._root_path = os.path.dirname(__file__)
-        self._index = 1
+        self._index = None
+        self.tool_button_name = None
+        self.setObjectName(None)
+
+
+
+
+    def css_file(self, root, dir, file):
+        return os.path.join(root, dir, file)
 
     @property
     def home_btn(self):
