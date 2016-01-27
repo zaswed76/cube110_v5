@@ -79,6 +79,7 @@ class AdapterPluginsGame:
     def __init__(self, plugin_dir, mod_name, class_name):
         """
         :param plugin_dir: относительный путь к пакету с плагинами
+        точка входа:
         :param mod_name: имя подключаемого модуля без расширения
         :param class_name: имя подключаемого класса
         """

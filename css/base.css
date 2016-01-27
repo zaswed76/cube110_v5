@@ -148,7 +148,7 @@ GameButton {
 
 
 QToolButton#seqgametool {
-
+    margin-top: 50px;
     border-image: url(resources/icons/seqgame/tool.png);
 }
 
@@ -156,13 +156,13 @@ QToolButton#seqgametool:hover {
     border-image: url(resources/icons/seqgame/tool_hover.png);
 }
 
-QToolButton#editgametool {
-    margin-top: 50px;
-    border-image: url(resources/icons/editgametool/tool.png);
-}
+/*QToolButton#editgametool {*/
+    /*margin-top: 50px;*/
+    /*border-image: url(resources/icons/editgametool/tool.png);*/
+/*}*/
 
-QToolButton#editgametool:hover {
-    margin-top: 50px;
-    border-image: url(resources/icons/editgametool/tool_hover.png);
-}
+/*QToolButton#editgametool:hover {*/
+    /*margin-top: 50px;*/
+    /*border-image: url(resources/icons/editgametool/tool_hover.png);*/
+/*}*/
 

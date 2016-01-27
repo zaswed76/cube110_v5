@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys
 import os
+import sys
 from functools import partial
-import yaml
+
 from PyQt4 import QtGui
 from PyQt4.QtCore import pyqtSlot
+
 import paths
-from gui import widgets as gui
 from cube_manager import menu_window
+from gui import widgets as gui
 from libs import plugin
 
 
@@ -17,7 +18,6 @@ class BaseWindow(QtGui.QMainWindow):
     def __init__(self, config):
         super().__init__()
         self.config = config
-        print(type(self.config['global_game_window']['spacing_setting']))
         self.showFullScreen()
         self.center = gui.MenegerFrame("center_frame")
         self.setCentralWidget(self.center)
@@ -35,9 +35,8 @@ class BaseWindow(QtGui.QMainWindow):
         self.global_game_window = menu_window.GlobalMenu(
                 "global_menu", parent=self,
                 visual_parent=self.center,
-        config=config["global_game_window"])
+                config=config["global_game_window"])
         self.stack.add_widget(self.global_game_window)
-
 
     def register_control(self, control_object, slot, *args):
         control_object.clicked.connect(getattr(self, slot))
@@ -64,15 +63,13 @@ class BaseWindow(QtGui.QMainWindow):
             home_btn.clicked.connect(self.return_to_global_window)
             self.stack.insertWidget(index, game_widget)
 
-
-
-            button = self.global_game_window.create_game_button(button_name, index)
+            button = self.global_game_window.create_game_button(
+                button_name, index)
             button.clicked.connect(partial(self.press_game, index))
 
     def plugin_valid(self, *atr):
         for i in atr:
             if i is None:
-
                 raise Exception("ERROR - {} not None".format(i))
 
     @pyqtSlot(int)
@@ -85,11 +82,8 @@ class BaseWindow(QtGui.QMainWindow):
 
 
 if __name__ == '__main__':
-
-
     css_default = "user1.css"
     css_path = os.path.join(paths.get_css_dir(), css_default)
-
 
     app = QtGui.QApplication(sys.argv)
     # app.addLibraryPath("/home/serg/project/cube110_v5/libs")
